@@ -33,7 +33,7 @@ body {
   opacity: 0.5;
 }
 
-.palleteContainer {
+.paletteContainer {
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -42,7 +42,7 @@ body {
   overflow: hidden;
 }
 
-.palleteItem {
+.paletteItem {
   transition: background-color 0.5s;
 }
 

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const palleteContainer = document.getElementById("palleteContainer");
+  const paletteContainer = document.getElementById("paletteContainer");
   const colorValues = [
     "1",
     "2",
@@ -17,27 +17,27 @@ document.addEventListener("DOMContentLoaded", () => {
     "E",
     "F",
   ];
-  const PALLETE_SIZE = 6;
+  const PALETTE_SIZE = 6;
 
   const btnUpdate = document.getElementById("btnUpdate");
 
   btnUpdate.addEventListener("click", () => {
-    updatePallete();
+    updatePalette();
   });
 
-  const createPallete = () => {
-    for (let i = 0; i < PALLETE_SIZE; i++) {
-      const palleteElement = document.createElement("div");
-      palleteElement.classList.add("palleteItem");
-      palleteContainer.appendChild(palleteElement);
+  const createPalette = () => {
+    for (let i = 0; i < PALETTE_SIZE; i++) {
+      const paletteElement = document.createElement("div");
+      paletteElement.classList.add("paletteItem");
+      paletteContainer.appendChild(paletteElement);
     }
-    updatePallete();
+    updatePalette();
   };
 
-  const colorize = (element, palleteColors, index) => {
+  const colorize = (element, paletteColors, index) => {
     let color = "#";
     // invertir y mantener el orden de %
-    let colorPercent = (PALLETE_SIZE - 1 - index) * 20;
+    let colorPercent = (PALETTE_SIZE - 1 - index) * 20;
     for (let i = 0; i < 6; i++) {
       // numero al azar entre 0 y 1, multiplicado x el largo del array (Math.floor para quitar decimales)
       const randomElement =
@@ -51,26 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
     element.innerHTML = `<span class='color-hex'>${color}</span>`;
 
     // almacenar en array
-    palleteColors.push(`${color} ${colorPercent}%`);
+    paletteColors.push(`${color} ${colorPercent}%`);
   };
 
-  const updatePallete = () => {
+  const updatePalette = () => {
     // array vacio Body bg
-    const palleteColors = [];
-    for (let i = 0; i < palleteContainer.children.length; i++) {
-      colorize(palleteContainer.children[i], palleteColors, i);
+    const paletteColors = [];
+    for (let i = 0; i < paletteContainer.children.length; i++) {
+      colorize(paletteContainer.children[i], paletteColors, i);
     }
 
     // cambiar el Body bg
-    const bodyBgColor = `linear-gradient(0deg, ${palleteColors
+    const bodyBgColor = `linear-gradient(0deg, ${paletteColors
       .reverse()
       .join(", ")})`;
     document.querySelector("body").style.background = bodyBgColor;
-    const sampleBgColor = `radial-gradient(circle, ${palleteColors.join(
+    const sampleBgColor = `radial-gradient(circle, ${paletteColors.join(
       ", "
     )})`;
     document.querySelector(".colorSample").style.background = sampleBgColor;
   };
 
-  createPallete();
+  createPalette();
 });
