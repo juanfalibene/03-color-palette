@@ -62,12 +62,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // cambiar el Body bg
-    const bodyBgColor = `linear-gradient(90deg, ${paletteColors
+    const bodyBgColor = `linear-gradient(-90deg, ${paletteColors
       .reverse()
       .join(", ")})`;
-    console.log(paletteColors, bodyBgColor);
-    document.querySelector(".container").style.background = bodyBgColor;
-    document.querySelector(".colorSample").style.background = bodyBgColor;
+    const container = document.querySelector(".container");
+    container.style.background = bodyBgColor;
+    const sample = document.querySelector(".colorSample");
+    sample.style.background = bodyBgColor;
+
+    const btnCopy = document.getElementById("btnCopy");
+
+    btnCopy.addEventListener("click", () => {
+      copyGradient();
+    });
+
+    const copyGradient = () => {
+      navigator.clipboard.writeText(`${bodyBgColor}`);
+      sample.textContent = `CSS Gradient copied to clipboard!`;
+
+      setTimeout(() => {
+        sample.textContent = "Copy CSS Gradient";
+      }, 2000);
+    };
   };
 
   createPalette();
