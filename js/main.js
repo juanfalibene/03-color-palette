@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.innerHTML = `<span class='color-hex'>${color}</span>`;
 
     // almacenar en array
-    paletteColors.push(`${color} ${colorPercent}%`);
+    paletteColors.push(`${color + 50} ${colorPercent}%`);
   };
 
   const updatePalette = () => {
@@ -62,14 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // cambiar el Body bg
-    const bodyBgColor = `linear-gradient(0deg, ${paletteColors
+    const bodyBgColor = `linear-gradient(90deg, ${paletteColors
       .reverse()
       .join(", ")})`;
-    document.querySelector("body").style.background = bodyBgColor;
-    const sampleBgColor = `radial-gradient(circle, ${paletteColors.join(
-      ", "
-    )})`;
-    document.querySelector(".colorSample").style.background = sampleBgColor;
+    console.log(paletteColors, bodyBgColor);
+    document.querySelector(".container").style.background = bodyBgColor;
+    document.querySelector(".colorSample").style.background = bodyBgColor;
   };
 
   createPalette();
