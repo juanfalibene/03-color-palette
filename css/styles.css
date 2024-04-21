@@ -79,3 +79,17 @@ button:hover {
   transform: scale(0.98);
   transition: 0.3s;
 }
+
+.credits,
+.credits a {
+  font-size: 0.875em;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+  transition: all 150ms ease-in-out;
+}
+
+.credits a:hover {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 0.9em;
+}
